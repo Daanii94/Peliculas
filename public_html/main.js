@@ -1,14 +1,14 @@
 var imgUrl = "http://image.tmdb.org/t/p/w185//";
 
-function creaListado(resp){
+function creaListado(resp) {
     
     var res = resp.results;
-    for(i=0; i<= res.length ; i++){
-        document.getElementById("listaPeliculas").innerHTML += "<div class='listItem'>" +
+    for (i=0; i<= res.length ; i++){
+        document.getElementById("listapeliculas").innerHTML += "<div class='listItem'>" +
                 "<div class='poster-container'> <img src='"+
                 imgUrl + res[i].poster_path +
                 "'/></div><div class='detail-container'><h1>" +
-                res[i].original_title + "</h1><div class='contenido_p' onclick='mostrar("+ res[i].id +");'>Descripcion</div>"+
+                res[i].original_title + "</h1><div class='contenido_p' onclick='mostrar'("+ res[i].id +");'>Descripcion</div>"+
                 "<p class='par_"+ res[i].id +"'>" + res[i].overview + "</p>"+    "</div></div>";
         
     }
@@ -18,7 +18,7 @@ function query(){
     
     $.ajax({
         type: "GET",
-        url:"https://api.themoviedb.org/3/movie/550?api_key=mikey",
+        url:"https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=db8464120756c3d3eb2d48ea757e9152",
         dataType: "json",
         success: function(resp){
             creaListado(resp);
